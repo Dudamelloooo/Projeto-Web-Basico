@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Administrativa</title>
+    <link rel="stylesheet" href="adm.css?v=1.0">
+</head>
+<body>
+   
+
+        <!-- Conteúdo Principal -->
+        <main>
+            <!-- Cabeçalho -->
+            <header>
+                <a href="/logout" id="logout">Sair</a>
+            </header>
+
+            <!-- Seção de Cadastro -->
+            <section id="cadastro">
+                <h2>Cadastro de Profissionais</h2>
+                <form id="form-produto" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servico">Serviço:</label>
+                        <input type="text" id="servico" name="servico" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preco">Preço:</label>
+                        <input type="number" id="preco" name="preco" step="0.01" min="0" required placeholder="Digite o preço (ex: 100.00)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="reset">Limpar</button>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+                </form>
+
+                <!-- Tabela de Funcionárias -->
+                <h2>Funcionárias Cadastradas</h2>
+                <table id="tabela">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Serviço</th>
+                            <th>Preço</th>
+                            <th>E-mail</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5">Nenhum registro encontrado</td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
