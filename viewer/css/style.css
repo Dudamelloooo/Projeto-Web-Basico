@@ -148,28 +148,53 @@ body {
   margin-left: 6rem;
 }
 
-
   .products-services {
     background-color: #f4edf8;
     padding: 40px 0;
+    text-align: center;
   }
   
-  .products-services h2 {
-    font-size: 80px;
-    color: #7A4DAB;
+  #mypopover {
+    background-color: #f4edf8;
+    border: none;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    max-width: 600px;
   }
   
-  .services-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  button.icon {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
   }
   
-  .services-container button {
+  #mypopover::backdrop {
+    background-color: #0005;
+  }
+  
+  #mypopover h3 {
+    margin-top: 0;
+    font-size: 46px;
+    color: #5c3780;
+    font-weight: 1000px;
+    text-align: center;
+  }
+  
+  #mypopover p {
+    color: #666;
+    font-size: 20px;
+    text-align: justify;
+  }
+  
+  #mypopover button.primary {
+    width: 100%;
+  }
+  
+  button.primary {
     background-color: #7A4DAB;
     color: #fff; 
     border: none;
-    padding: 15px 25px;
+    padding: 30px 50px;
     font-size: 40px;
     border-radius: 5px;
     cursor: pointer;
@@ -177,8 +202,8 @@ body {
     margin-bottom: 50px;
   }
   
-  .services-container button:hover {
-    background-color: #5C3780;
+  button.primary:hover {
+    background-color: #5c3780;
   }
   
   
