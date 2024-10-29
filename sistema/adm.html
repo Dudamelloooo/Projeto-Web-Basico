@@ -7,48 +7,79 @@
     <link rel="stylesheet" href="adm.css?v=1.0">
 </head>
 <body>
-   
-
-        <!-- Conteúdo Principal -->
-        <main>
-            <!-- Cabeçalho -->
-            <header>
-                <a href="/logout" id="logout">Sair</a>
-            </header>
-
-            <!-- Seção de Cadastro -->
-            <section id="cadastro">
+    <main>
+        <section id="cards-container">
+            <!-- Formulário de Profissionais -->
+            <div class="card">
                 <h2>Cadastro de Profissionais</h2>
-                <form id="form-produto" onsubmit="return validateForm()">
+                <form id="form-produto" onsubmit="return handleCadastro(event, 'tabela-profissionais')">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome" required>
+                        <input type="text" id="nome" required>
                     </div>
-
                     <div class="form-group">
                         <label for="servico">Serviço:</label>
-                        <input type="text" id="servico" name="servico" required>
+                        <input type="text" id="servico" required>
                     </div>
-
                     <div class="form-group">
                         <label for="preco">Preço:</label>
-                        <input type="number" id="preco" name="preco" step="0.01" min="0" required placeholder="Digite o preço (ex: 100.00)">
+                        <input type="number" id="preco" step="0.01" min="0" required>
                     </div>
-
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" required>
                     </div>
-
                     <div class="form-buttons">
                         <button type="reset">Limpar</button>
                         <button type="submit">Cadastrar</button>
                     </div>
                 </form>
+            </div>
 
-                <!-- Tabela de Funcionárias -->
-                <h2>Funcionárias Cadastradas</h2>
-                <table id="tabela">
+            <!-- Formulário de Empresas Parceiras -->
+            <div class="card">
+                <h2>Cadastro de Empresas Parceiras</h2>
+                <form id="form-empresas" onsubmit="return handleCadastro(event, 'tabela-empresas')">
+                    <div class="form-group">
+                        <label for="empresa">Empresa:</label>
+                        <input type="text" id="empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contato">Contato:</label>
+                        <input type="email" id="contato" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="reset">Limpar</button>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Formulário de Embaixadoras -->
+            <div class="card">
+                <h2>Cadastro de Embaixadoras</h2>
+                <form id="form-embaixadoras" onsubmit="return handleCadastro(event, 'tabela-embaixadoras')">
+                    <div class="form-group">
+                        <label for="influencer">Nome:</label>
+                        <input type="text" id="influencer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rede">Rede Social:</label>
+                        <input type="url" id="rede" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="reset">Limpar</button>
+                        <button type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Tabelas -->
+        <section class="tabelas-container">
+            <div class="tabela-card">
+                <h2>Profissionais Cadastrados</h2>
+                <table id="tabela-profissionais">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -62,10 +93,41 @@
                         <tr><td colspan="5">Nenhum registro encontrado</td></tr>
                     </tbody>
                 </table>
-            </section>
-        </main>
-    </div>
+            </div>
 
+            <div class="tabela-card">
+                <h2>Empresas Cadastradas</h2>
+                <table id="tabela-empresas">
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>Contato</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="3">Nenhum registro encontrado</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tabela-card">
+                <h2>Embaixadoras Cadastradas</h2>
+                <table id="tabela-embaixadoras">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Rede Social</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="3">Nenhum registro encontrado</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
