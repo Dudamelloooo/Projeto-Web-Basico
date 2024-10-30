@@ -1,41 +1,61 @@
 let linhaEditada = null;
 
-function handleCadastro(event, tabelaId) {
-    event.preventDefault(); // Impede o recarregamento da página
-    const form = event.target;
-    const valores = Array.from(form.querySelectorAll('input')).map(input => input.value); // Extrai os valores dos inputs
+document.addEventListener('DOMContentLoaded', () => {
+    ['tabela-profissionais', 'tabela-empresas', 'tabela-embaixadoras'].forEach(tabelaId => 
+        carregarDadosSalvos(tabelaId)
+    );
+});
 
-    if (linhaEditada) {
-        atualizarLinha(linhaEditada, valores); // Atualiza a linha se estiver em edição
-        linhaEditada = null;
-    } else {
-        adicionarLinha(tabelaId, valores); // Adiciona nova linha na tabela correspondente
+// HANDLE CADASTRO
+function handleCadastro(event, tabelaId) {
+    event.preventDefault();
+    const form = event.target;
+    const valores = Array.from(form.querySelectorAll('input')).map(input => input.value);
+
+    switch (linhaEditada ? 'atualizar' : 'adicionar') {
+        case 'atualizar':
+            atualizarLinha(linhaEditada, valores);
+            linhaEditada = null;
+            break;
+        case 'adicionar':
+            adicionarLinha(tabelaId, valores);
+            break;
     }
 
-    form.reset(); // Limpa o formulário
+    salvarDados(tabelaId);
+    form.reset();
 }
 
+// ADD LINHA
 function adicionarLinha(tabelaId, valores) {
     const tabela = document.getElementById(tabelaId).querySelector('tbody');
-    
-    if (tabela.rows.length === 1 && tabela.rows[0].cells.length === 1) {
-        tabela.deleteRow(0); // Remove a mensagem "Nenhum registro encontrado"
+
+    switch (tabela.rows.length) {
+        case 1:
+            if (tabela.rows[0].cells.length === 1) {
+                tabela.deleteRow(0);
+            }
+            break;
     }
 
-    const novaLinha = tabela.insertRow(); // Cria uma nova linha
+    const novaLinha = tabela.insertRow();
     valores.forEach(valor => {
-        const celula = novaLinha.insertCell(); // Adiciona células para cada valor
+        const celula = novaLinha.insertCell();
         celula.innerText = valor;
     });
 
-    const celulaAcao = novaLinha.insertCell(); // Adiciona célula para botões de ação
+    const celulaAcao = novaLinha.insertCell();
     const botaoEditar = criarBotao('Editar', () => preencherFormulario(novaLinha, tabelaId));
-    const botaoDeletar = criarBotao('Excluir', () => excluirLinha(novaLinha, tabela));
+    const botaoDeletar = criarBotao('Excluir', () => {
+        excluirLinha(novaLinha, tabela);
+        salvarDados(tabelaId);
+    });
 
     celulaAcao.appendChild(botaoEditar);
     celulaAcao.appendChild(botaoDeletar);
 }
 
+// CRIA BOTÃO
 function criarBotao(texto, acao) {
     const botao = document.createElement('a');
     botao.href = '#';
@@ -48,31 +68,39 @@ function criarBotao(texto, acao) {
     return botao;
 }
 
+// PREENCHER FORMULÁRIO
 function preencherFormulario(linha, tabelaId) {
-    linhaEditada = linha; // Guarda a linha em edição
-    const formId = getFormIdByTabela(tabelaId); // Obtém o formulário correspondente à tabela
-    const inputs = document.querySelector(`#${formId}`).querySelectorAll('input'); // Seleciona os inputs do formulário
+    linhaEditada = linha;
+    const formId = getFormIdByTabela(tabelaId);
+    const inputs = document.querySelector(`#${formId}`).querySelectorAll('input');
+
     Array.from(linha.cells).slice(0, -1).forEach((celula, index) => {
-        inputs[index].value = celula.innerText; // Preenche os inputs com os valores da linha
+        inputs[index].value = celula.innerText;
     });
 }
 
+// ATUALIZAR LINHA
 function atualizarLinha(linha, valores) {
     valores.forEach((valor, index) => {
-        linha.cells[index].innerText = valor; // Atualiza as células com novos valores
+        linha.cells[index].innerText = valor;
     });
 }
 
+// TIRA LINHA
 function excluirLinha(linha, tabela) {
-    tabela.deleteRow(linha.rowIndex - 1); // Remove a linha
-    if (tabela.rows.length === 0) {
-        const novaLinha = tabela.insertRow(); // Adiciona mensagem se não houver mais linhas
-        const celula = novaLinha.insertCell(0);
-        celula.colSpan = linha.cells.length;
-        celula.innerText = 'Nenhum registro encontrado';
+    tabela.deleteRow(linha.rowIndex - 1);
+
+    switch (tabela.rows.length) {
+        case 0:
+            const novaLinha = tabela.insertRow();
+            const celula = novaLinha.insertCell(0);
+            celula.colSpan = linha.cells.length;
+            celula.innerText = 'Nenhum registro encontrado';
+            break;
     }
 }
 
+// IDENTIFICAR FORMULÁRIO
 function getFormIdByTabela(tabelaId) {
     switch (tabelaId) {
         case 'tabela-profissionais':
@@ -84,4 +112,19 @@ function getFormIdByTabela(tabelaId) {
         default:
             return '';
     }
+}
+
+// SALVAR DADOS
+function salvarDados(tabelaId) {
+    const tabela = document.getElementById(tabelaId).querySelector('tbody');
+    const dados = Array.from(tabela.rows).map(row =>
+        Array.from(row.cells).slice(0, -1).map(cell => cell.innerText)
+    );
+    localStorage.setItem(tabelaId, JSON.stringify(dados));
+}
+
+// CARREGAR DADOS
+function carregarDadosSalvos(tabelaId) {
+    const dados = JSON.parse(localStorage.getItem(tabelaId)) || [];
+    dados.forEach(valores => adicionarLinha(tabelaId, valores));
 }
