@@ -3,11 +3,11 @@
 html{
   scroll-behavior: smooth;
 }
+/* só de frufru kkkkk */
 
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    padding: 0;
     background-color: #7a4dab;
     color: #333;
   }
@@ -26,12 +26,13 @@ body {
   }
   
   header img {
-    width: 93.3px;
-    height: 94.1px;
+    width: 93px;
+    height: 94px;
     margin-right: 10px;
     vertical-align: middle;
   }
-  
+  /* arrumar urgente essa bomba nao responsiva codigo ruim width e height nd hvr eu odeio essa configuraçao lixo */
+
   header ul {
     list-style: none;
     display: flex;
@@ -41,7 +42,7 @@ body {
   
   header ul li a {
     text-decoration: none;
-    color: #5c3780; /* Changed from white to #fff for consistency */
+    color: #5c3780; 
     font-size: 22px;
     font-weight: bold;
     transition-duration: 0.5s ;
@@ -70,6 +71,7 @@ body {
     margin-top: 500px;
     margin-left: 9rem;
 }
+/* arrumar meu deus vou ficar louca parece q uma criança tava brincando de css aqui */
 
 .container {
   display: flex;
@@ -95,10 +97,11 @@ body {
 
 
   #HOME {
-    background-color: #ffffffe5;
+    background-color: #ffffffe5; 
+    /* um off white meio fora do basico dos 6f pra frufru */
     padding: 20px;
-    border-radius: 10px; /* Caso queira bordas arredondadas */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+    border-radius: 10px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .home {
@@ -251,6 +254,7 @@ body {
     border-radius: 50%; 
     border: 5px solid #f4edf8; 
 }
+/* horrendo */
 
 .testimonial-text {
     flex: 1; 
