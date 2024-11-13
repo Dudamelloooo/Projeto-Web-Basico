@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 });
 
-// HANDLE CADASTRO
 function handleCadastro(event, tabelaId) {
     event.preventDefault();
     const form = event.target;
@@ -26,7 +25,6 @@ function handleCadastro(event, tabelaId) {
     form.reset();
 }
 
-// ADD LINHA
 function adicionarLinha(tabelaId, valores) {
     const tabela = document.getElementById(tabelaId).querySelector('tbody');
 
@@ -55,7 +53,6 @@ function adicionarLinha(tabelaId, valores) {
     celulaAcao.appendChild(botaoDeletar);
 }
 
-// CRIA BOTÃO
 function criarBotao(texto, acao) {
     const botao = document.createElement('a');
     botao.href = '#';
@@ -68,7 +65,6 @@ function criarBotao(texto, acao) {
     return botao;
 }
 
-// PREENCHER FORMULÁRIO
 function preencherFormulario(linha, tabelaId) {
     linhaEditada = linha;
     const formId = getFormIdByTabela(tabelaId);
@@ -79,14 +75,12 @@ function preencherFormulario(linha, tabelaId) {
     });
 }
 
-// ATUALIZAR LINHA
 function atualizarLinha(linha, valores) {
     valores.forEach((valor, index) => {
         linha.cells[index].innerText = valor;
     });
 }
 
-// TIRA LINHA
 function excluirLinha(linha, tabela) {
     tabela.deleteRow(linha.rowIndex - 1);
 
@@ -100,7 +94,6 @@ function excluirLinha(linha, tabela) {
     }
 }
 
-// IDENTIFICAR FORMULÁRIO
 function getFormIdByTabela(tabelaId) {
     switch (tabelaId) {
         case 'tabela-profissionais':
@@ -114,7 +107,6 @@ function getFormIdByTabela(tabelaId) {
     }
 }
 
-// SALVAR DADOS
 function salvarDados(tabelaId) {
     const tabela = document.getElementById(tabelaId).querySelector('tbody');
     const dados = Array.from(tabela.rows).map(row =>
@@ -123,7 +115,6 @@ function salvarDados(tabelaId) {
     localStorage.setItem(tabelaId, JSON.stringify(dados));
 }
 
-// CARREGAR DADOS
 function carregarDadosSalvos(tabelaId) {
     const dados = JSON.parse(localStorage.getItem(tabelaId)) || [];
     dados.forEach(valores => adicionarLinha(tabelaId, valores));
