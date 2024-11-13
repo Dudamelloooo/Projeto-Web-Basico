@@ -14,5 +14,5 @@ document.querySelector('button').addEventListener('click', validateLogin);
 document.addEventListener('keypress', function(event) {
     if (event.key === "Enter") { 
         validateLogin()
-    }
+}
 });
