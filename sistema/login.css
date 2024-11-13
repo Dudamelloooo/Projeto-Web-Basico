@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Garet:wght@800&display=swap');
+
+body {
+    font-family: 'Garet', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: rgb(163, 101, 163);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 10px;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 32px;
+    font-weight: 2000px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container button {
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(106, 12, 106);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container button:hover {
+    background-color: rgba(106, 12, 106, 0.411);
+}

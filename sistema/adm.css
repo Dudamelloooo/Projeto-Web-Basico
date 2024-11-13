@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: #f4f6f8;
+    background-color: #7a4dab;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +58,7 @@ main {
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: #7A4DAB;
     font-size: 1.8rem;
 }
 
