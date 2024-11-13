@@ -119,3 +119,26 @@ function carregarDadosSalvos(tabelaId) {
     const dados = JSON.parse(localStorage.getItem(tabelaId)) || [];
     dados.forEach(valores => adicionarLinha(tabelaId, valores));
 }
+
+
+
+// ateraçao 1 que é fazer a validação no js
+function validarFormulario(form) {
+    const inputs = form.querySelectorAll('input');
+    for (let input of inputs) {
+        if (!input.checkValidity()) {
+            alert(`Por favor, preencha o campo ${input.previousElementSibling.innerText} corretamente.`);
+            input.focus();
+            return false;
+        }
+    }
+    return true;
+}
+
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', (event) => {
+        if (!validarFormulario(form)) {
+            event.preventDefault();
+        }
+    });
+});

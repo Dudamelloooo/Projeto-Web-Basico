@@ -1,17 +1,18 @@
-function validarUsuario(usuario, senha) {
-    const usuarioValido = "adm";
-    const senhaValida = "12345";
-
-    return usuario === usuarioValido && senha === senhaValida;
-}
-
-document.querySelector('button').addEventListener('click', function() {
+function validateLogin() {
     const usuario = document.querySelector('#usuario').value;
     const senha = document.querySelector('#senha').value;
 
-    if (validarUsuario(usuario, senha)) {
-        alert('Login successful');
+    if (usuario === "admin" && senha === "1234") {
+        window.location.href = 'adm.html';
     } else {
-        alert('Invalid username or password');
+        alert("Usuário ou senha incorretos!");
     }
+}
+document.querySelector('button').addEventListener('click', validateLogin);
+
+// o enter q n funcionaaaaaaaaaaaaaaaaaaaaa
+document.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") { 
+        validateLogin()
+    }
 });

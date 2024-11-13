@@ -21,6 +21,10 @@ body {
     gap: 10px;
     text-align: center;
 }
+.login-container a {
+color: #ffffff;
+font-size: 30px;
+}
 
 .login-container h2 {
     font-size: 32px;

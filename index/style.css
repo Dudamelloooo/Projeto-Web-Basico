@@ -316,3 +316,28 @@ footer a {
 footer a:hover {
   color: #D1BBFE;
 }
+
+.back-to-top {
+  background-color: #D1BBFE;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.back-to-top img {
+  width: 30px;
+  height: 30px;
+}
+
+.back-to-top:hover {
+  background-color: #5c3780;
+}
